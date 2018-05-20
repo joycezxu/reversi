@@ -15,10 +15,10 @@ function GetURLParameters(whichParam)
 }
 
 var username= GetURLParameters('username');
-if('undefined' == typeof username || :username){
-	username = 'anonymous_' + Math.random();
+if('undefined' == typeof username || !username){
+	username = 'Anonymous_' +Math.random();
 }
 
 
 
-$('#messages').append('<h4>' +username+ '</h4');
+$('#messages').append('<h4>' +username+ '</h4>');
