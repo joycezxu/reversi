@@ -7,8 +7,9 @@
     <title>Reversi Game Lobby</title>
 
   	<style>
-  	    #header-row {
-  	        background-image: url('assets/images/gradient.jpg');
+  	    body{
+  	        background-image: url('assets/images/civil war.jpg');
+            background-size: cover;
   	    }
   	</style>
 
@@ -19,15 +20,15 @@
   </head>
   <body>
     <div class='container-fluid text-center'>
-      <div class='row' id='header-row'>
+      <div class='row'>
         <div class='col'>
-          <h2>Lobby</h2>
+          <h2 style="color:white;">Lobby</h2>
          </div>
         </div>
 
         <div class='row align-items-end' id='players'>
             <div class='col-9 text-left'>
-                <h3>Players</h3>
+                <h3 style="color:white;">Players</h3>  
             </div>
             <div class='col-3'>
             </div>
@@ -38,7 +39,7 @@
 
           <div class='row'>
             <div class='col'>
-               <h3>Messages</h3>
+               <h3 style="color:white;">Messages</h3>
               <form class='form-inline text-align' onsubmit='send_message(); return false;'>
               <label for='send_message_holder' class='col-form-label sr-only'> Enter your chat message</label>
               <input class='form-control mx-auto w-75' type='text' value='' id='send_message_holder' placeholder='Enter your chat message' autocomplete='off'/>
@@ -47,7 +48,7 @@
            </div>
         </div>
         <div class='row'>
-            <div class='col text-left'>
+            <div class='col'>
               <div id='messages'>
               </div>
             </div>
