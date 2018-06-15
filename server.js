@@ -989,10 +989,10 @@ function send_game_update(socket, game_id, message){
 		// send game over message //
 		var winner = 'tie game';
 		if(black > white){
-			winner = 'black';
+			winner = 'Iron Man';
 		}
 		if(white > black){
-			winner = 'white';
+			winner = 'Captain America';
 		}
 
 		var success_data = {
