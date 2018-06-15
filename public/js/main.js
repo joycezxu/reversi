@@ -61,7 +61,7 @@ socket.on('join_room_response',function(payload){
 		nodeA.addClass('w-100');
 
 		nodeB.addClass('col-9 text-right');
-		nodeB.append('<h4>'+payload.username+'</h4');
+		nodeB.append('<h4 style="color:white;">'+payload.username+'</h4>');
 
 		nodeC.addClass('col-3 text-left');
 		var buttonC = makeInviteButton(payload.socket_id);
@@ -85,7 +85,7 @@ socket.on('join_room_response',function(payload){
 	}
 
 	/* Manage the message that a new player has joined */
-	var newHTML = '<p>' +payload.username+' just entered the room</p>';
+	var newHTML = '<p style="color:white;">' +payload.username+' just entered the room</p>';
 	var newNode = $(newHTML);
 	newNode.hide();
 	$('#messages').prepend(newNode);
@@ -114,7 +114,7 @@ socket.on('player_disconnected',function(payload){
 	}
 
 	/* Manage the message that a new player has left */
-	var newHTML = '<p>' + payload.username+' has left the room</p>';
+	var newHTML = '<p style="color:white;">' + payload.username+' has left the room</p>';
 	var newNode = $(newHTML);
 	newNode.hide();
 	$('#messages').prepend(newNode);
@@ -227,7 +227,7 @@ socket.on('send_message_response',function(payload){
 		return;
 	}
 
-	var newHTML = '<p><b>'+payload.username+' says:</b> '+payload.message+'</p>';
+	var newHTML = '<p style="color: white;">'+payload.username+' says:'+payload.message+'</p>';
 	var newNode = $(newHTML);
 	newNode.hide();
 	$('#messages').prepend(newNode);
@@ -338,8 +338,24 @@ socket.on('game_update', function(payload){
 		return; 
 	}
 
-	$('#my_color').html('<h3 id="my_color">I am '+my_color+'</h3>');
-	$('#my_color').append('<h4>It is '+payload.game.whose_turn+'\'s turn. Elapsed time <span id="elapsed"></span></h4>');
+	if (my_color == 'white') {
+	var player_name = 'Captain America';
+	}
+	else {
+	var player_name = 'Iron Man';
+	}
+	
+	if (payload.game.whose_turn == 'white') {
+	var player_turn = 'Captain America';
+	}
+	else {
+	var player_turn = 'Iron Man';
+	}
+
+	payload.game.whose_turn
+
+	$('#my_color').html('<h3 id="my_color" style="color:white;">I am '+player_name+'</h3>');
+	$('#my_color').append('<h4 style="color:white;">It is '+player_turn+'\'s turn. Elapsed time <span id="elapsed"></span></h4>');
 
 	clearInterval(interval_timer);
 	interval_timer = setInterval(function(last_time){
@@ -461,7 +477,7 @@ socket.on('game_over', function(payload){
 
 	// Jump to a new page //
 
-	$('#game_over').html('<h1>Game Over</h1><h2>'+payload.who_won+' won!</h2>');
+	$('#game_over').html('<h1 style="color:white;">Game Over</h1><h2 style="color:white;">'+payload.who_won+' won!</h2>');
     $('#game_over').append('<a href="lobby.html?username=' + username + '" class="btn btn-success btn-lg active" role="button" aria-pressed="true">Return to the lobby</a> ');
 });
 
